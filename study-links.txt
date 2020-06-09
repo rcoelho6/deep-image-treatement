@@ -1,0 +1,6 @@
+https://nanonets.com/blog/ocr-with-tesseract/
+https://www.freecodecamp.org/news/getting-started-with-tesseract-part-ii-f7f9a0899b3f/
+https://medium.com/cashify-engineering/improve-accuracy-of-ocr-using-image-preprocessing-8df29ec3a033
+
+https://stackoverflow.com/questions/9480013/image-processing-to-improve-tesseract-ocr-accuracy?rq=1
+
