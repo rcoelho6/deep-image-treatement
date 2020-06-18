@@ -26,7 +26,9 @@ img = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
 
 #Really really near (Dark --)
 #img = cv2.adaptiveThreshold(cv2.bilateralFilter(img, 5, 45, 45), 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 31, 2)
-img = cv2.adaptiveThreshold(cv2.bilateralFilter(img, 1, 0, 0), 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 31, 3)
+img = cv2.adaptiveThreshold(cv2.bilateralFilter(img, 1, 0, 0), 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.ADAPTIVE_THRESH_MEAN_C, 31, 3)
+#img = cv2.adaptiveThreshold(cv2.bilateralFilter(img, 1, 0, 0), 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 31, 3)
+#img = cv2.adaptiveThreshold(cv2.bilateralFilter(img, 1, 0, 0), 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 29, 5)
 
 #img = cv2.adaptiveThreshold(cv2.medianBlur(img, 3), 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 31, 2)
 
