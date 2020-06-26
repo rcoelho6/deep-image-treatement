@@ -4,3 +4,5 @@ https://medium.com/cashify-engineering/improve-accuracy-of-ocr-using-image-prepr
 
 https://stackoverflow.com/questions/9480013/image-processing-to-improve-tesseract-ocr-accuracy?rq=1
 
+https://pypi.org/project/python-Levenshtein/
+https://numpy.org/
