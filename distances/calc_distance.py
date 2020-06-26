@@ -8,23 +8,39 @@ class OCRDistance():
             return distance
         return -1
 
+    def distance(self, found, exames, bestdistance, bestresult):
+        localresult = self.similarity(found,exames,10)
+        if localresult != -1 and localresult <= bestdistance:
+            bestdistance = localresult
+            bestresult = exames
+        return bestdistance, bestresult
+
+    def calculate(self, allexames, found):
+            bestresult = ""
+            bestdistance = 999
+            for exames in allexames:
+                bestdistance, bestresult = self.distance(found,exames.strip(), bestdistance, bestresult)
+                bestdistance, bestresult = self.distance(found,exames.strip().split("-")[0], bestdistance, bestresult)
+                bestdistance, bestresult = self.distance(found,exames.strip().split(",")[0], bestdistance, bestresult)
+
+            return bestresult
+
 
     def find_similarities(self, allexames, imagefound):
         arrayfound = imagefound.split('\n')
         finalresult = ""
 
         for found in arrayfound:
-            bestresult = ""
-            bestdistance = 10
             found = found.strip()
             if found == "":
                 continue
+            bestresult = self.calculate(allexames, found)
 
-            for exames in allexames:
-                localresult = self.similarity(found,exames.strip(),12)
-                if localresult != -1 and localresult <= bestdistance:
-                    bestdistance = localresult
-                    bestresult = exames
+            if bestresult == "":
+                bestresult = self.calculate(allexames, found.split("-")[0])
+
+            if bestresult == "":
+                bestresult = self.calculate(allexames, found.split(",")[0])
 
             if bestresult != "":
                 finalresult = finalresult + bestresult + "\n"
@@ -38,16 +54,12 @@ allexames = numpy.array([
     "MAGNESIO",
     "TRANSFERRINA",
     "VITAMINA D3",
-    "FERRITINA",
-    "FOLICULO ESTIMULANTE",
     "HORMONIO LUTEINIZANTE",
     "PROLACTINA",
     "SULFATO DE DEMIDROEPIANDROSTERONA",
     "T4 LIVRE",
     "TESTOSTERONA LIVRE",
     "TESTOSTERONA TOTAL",
-    "TIREOESTIMULANTE",
-    "HORMONIO (TSH)",
     "COLESTEROL (HDL) - PESQUISA E/OU DOSAGEM",
     "COLESTEROL TOTAL - PESQUISA E/OU DOSAGEM",
     "FOSFATASE ALCALINA - PESQUISA E/OU DOSAGEM"
